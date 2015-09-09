@@ -233,3 +233,22 @@ h1 {
 #backbutton{
     padding: 13px 10px 10px;
 }
+#loading{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 90px;
+    height: 90px;
+    margin-top: -45px;
+    margin-left: -45px;
+}
+*{
+    -webkit-tap-highlight-color: transparent !important;
+
+}
+#profilephoto{
+    /*float: none !important;*/
+    padding: 5px !important;
+    /*line-height: auto !important;*/
+
+}

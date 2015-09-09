@@ -25,7 +25,7 @@
         <meta name="format-detection" content="telephone=no" />
         <meta name="msapplication-tap-highlight" content="no" />
         <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
-        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=medium-dpi" />
         <link rel="stylesheet" type="text/css" href="css/index.css" />
         <link rel="stylesheet" type="text/css" href="css/sweetalert.css" />
         <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
@@ -33,6 +33,9 @@
         <title>File Uploader</title>
     </head>
     <body>
+        <div id="loading">
+            <img width="128" src="img/loading1.gif"/>
+        </div>
         <input type="hidden" id="activepage" value="login"/>
         <input type="hidden" id="currentuserid" value=""/>
         <input type="hidden" id="currentteamid" value=""/>
@@ -202,14 +205,18 @@
                     var urlArray = photoURI.split("/");
                     var fullFileName = urlArray[urlArray.length-1];
                     var fileName = fullFileName.split(".")[0];
+                    alert(fullFileName);
                     var fileExtension = fullFileName.split(".")[1];
                     var url=encodeURI("http://app.heyorca.com:8080/app/upload_as_media");
                     var options = new FileUploadOptions();
                     options.fileKey="photo";
                     options.fileName=fullFileName;
-                    options.mimeType="video/mp4";
+//                    options.mimeType="video/mp4";
 
                     var params = new Object();
+
+
+
                     params.user_id = $("#currentuserid").val();
                     params.team_id = $("#currentteamid").val();
 

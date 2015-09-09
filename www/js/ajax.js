@@ -4,6 +4,7 @@
 
 function sendAjax() {
     if($("#termsaccept").prop('checked')){
+        showLoading();
         // get inputs
         var article = new Object();
         article.identity = $('#username').val();
@@ -18,9 +19,16 @@ function sendAjax() {
 //            contentType: 'application/json',
 //            mimeType: 'application/json',
             success: function (data) {
-//                console.log(data);
+                console.log(data);
+                hideLoading();
                 if(data.success == false){
-                    sweetAlert(data.data);
+                    sweetAlert({
+                            title: "",
+                            text: data.data,
+                            html: true
+                    });
+//                    $(".confirm").trigger('blur');
+//                    $(".confirm").blur();
                     $("#password").val("");
                 }else{
                     $("#currentuserid").val(data.data.id);
@@ -30,13 +38,13 @@ function sendAjax() {
 //                            $("#profilephoto").attr("src",);
                         }else{
                             $("#profilephoto").attr("src",data.data.profilepic_thumb);
-                            $("#profilephoto").css("height","64px");
+//                            $("#profilephoto").css("height","64px");
                             $("#profilephoto").show();
                         }
                         var teams = data.data.editable_teams;
                         var divStr = "";
                         for (var i in teams){
-                             divStr = divStr + '<div onclick="setTeamId('+teams[i].id+');" id="team-div'+teams[i].id+'" class="team-div" style="border: 2px solid darkgray; display: inline-block; overflow: hidden; padding: 10px; margin: 5px auto; ' +
+                             divStr = divStr + '<div ontouchstart="setTeamId('+teams[i].id+');" id="team-div'+teams[i].id+'" class="team-div" style="border: 2px solid darkgray; display: inline-block; overflow: hidden; padding: 10px; margin: 5px auto; ' +
                                  'width: 40%; margin-right:5px; min-height:120px;' +
                                  'border-radius: 25px;">' +
                                 '<div style="border-radius: 50px; overflow: hidden;margin-bottom: 15px;">';
@@ -54,11 +62,11 @@ function sendAjax() {
                         $("#teams").show();
                         $("#app-wrapper").fadeIn("slow");
                         $("#activepage").val("app");
-//                        $("#backbutton")
                     })
                 }
             },
             error:function(data,status,er) {
+                hideLoading();
                 sweetAlert("There is a connection problem. Check your internet connection is healthy.");
             }
         });
@@ -70,7 +78,7 @@ function setTeamId(teamId){
     $(".team-div").removeClass("current-team");
     $("#team-div"+teamId).addClass("current-team");
     $("#currentteamid").val(""+teamId+"");
-    $("#teams").fadeOut("fast",function(){
+    $("#teams").fadeOut("slow",function(){
         $("#app").show();
     });
 

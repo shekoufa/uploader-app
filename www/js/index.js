@@ -36,6 +36,7 @@ var app = {
         document.addEventListener("backbutton", onBackKeyDown, false);
         app.receivedEvent('deviceready');
 
+
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
@@ -65,11 +66,11 @@ function onBackKeyDown(evt) {
                 navigator.app.exitApp();
             });
     }else if($("#activepage").val()!="outlink"){
-        $("#preview").fadeOut("fast",function(){
+        $("#preview").fadeOut("slow",function(){
             document.getElementById("imagecontainer").innerHTML = '<img id="smallImage"/>';
             $("#backbutton").hide();
             $("#activepage").val("app");
-            $("#app").fadeIn("fast");
+            $("#app").fadeIn("slow");
         });
     }
 
@@ -78,4 +79,10 @@ function onBackKeyDown(evt) {
         navigator.app.backHistory();
     }
 
+}
+function showLoading(){
+    $("#loading").show();
+}
+function hideLoading(){
+    $("#loading").hide();
 }

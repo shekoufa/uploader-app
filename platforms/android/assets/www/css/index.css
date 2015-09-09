@@ -233,3 +233,9 @@ h1 {
 #backbutton{
     padding: 13px 10px 10px;
 }
+#loading{
+    position: absolute;
+    left: 50%;
+    top:50% ;
+    float : left;
+}
