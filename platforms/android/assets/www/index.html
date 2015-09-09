@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<!--
+    Copyright (c) 2012-2014 Adobe Systems Incorporated. All rights reserved.
+
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+     KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+-->
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="msapplication-tap-highlight" content="no" />
+        <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+        <link rel="stylesheet" type="text/css" href="css/index.css" />
+        <link rel="stylesheet" type="text/css" href="css/sweetalert.css" />
+        <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+        <link rel="stylesheet" type="text/css" href="css/bootstrap-theme.css" />
+        <title>File Uploader</title>
+    </head>
+    <body>
+        <input type="hidden" id="activepage" value="login"/>
+        <input type="hidden" id="currentuserid" value=""/>
+        <input type="hidden" id="currentteamid" value=""/>
+        <input type="hidden" id="photouri" value=""/>
+        <input type="hidden" id="videouri" value=""/>
+        <input type="hidden" id="uploadtype" value=""/>
+        <div id="login" class="container">
+            <img src="img/logo.svg"/>
+            <div id="login-inputs" class="form-group">
+                <input type="text" class="form-control input-lg" id="username" placeholder="Your Identity..."/>
+                <input type="password" class="form-control input-lg upcomming-element" id="password" placeholder="Your Password..."/>
+                <div class="upcomming-element">
+                    <input type="checkbox" checked id="termsaccept"/> I have read and accept <a onclick="outlink();" href="http://heyorca.com/terms-of-service/">Terms of Service</a> and <a href="http://heyorca.com/privacy-policy/">Privacy Policy</a>.
+                </div>
+                <input type="button" class="btn-info input-lg upcomming-element" onclick="sendAjax();" value="Log me in"/>
+                <a style="display: inline-block;" class="upcomming-element" onclick="outlink();" href="https://app.heyorca.com/auth/forgot_password">Forgot your credentials?!</a>
+            </div>
+        </div>
+        <div id="app-wrapper" style="display: none;">
+            <nav class="navbar navbar-default">
+                <div class="container-fluid">
+                    <!-- Brand and toggle get grouped for better mobile display -->
+                    <div class="navbar-header">
+                        <button id="navbar-button" type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="true">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <input style="display: none;" class="navbar-brand navbar-item" id="backbutton" onclick="showAppPage();" type="image" src="img/back.png"/>
+                        <img style="display: none;" height="32" class="navbar-brand navbar-item" id="profilephoto"/>
+                        <a class="navbar-brand navbar-item" href="#"><label id="fullname"></label></a>
+                    </div>
+                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                        <ul class="nav navbar-nav">
+                            <li><a class="navbar-item" href="javascript:void(0);" style="text-align: right;" onclick="switchMyTeam();">Switch team</a></li>
+                            <li><a class="navbar-item" href="javascript:void(0);" style="text-align: right;" onclick="logMeOut();">Log out!</a></li>
+                        </ul>
+                    </div><!-- /.navbar-collapse -->
+                </div><!-- /.container-fluid -->
+            </nav>
+            <div id="teams" class="app" style="display: none;">
+                <div class="info-text">
+                    Tap on team to continue...
+                </div>
+                <div id="team-holder"></div>
+            </div>
+            <div id="app" class="app" style="display: none;">
+                <div id="functionbottons">
+                    <div class="info-text">
+                        Capture and upload media to your HeyOrca! library, right away
+                    </div>
+                    <div>
+                        <input type="image" src="img/photo.png" onclick="takePhoto();" name="image" title="Take a Photo!" width="120">
+                        <!--<input type="button" onclick="takePhoto();" value="Take a Photo!"/>-->
+                    </div>
+                    <div>
+                        <input type="image" src="img/video.png" onclick="recordVideo();" name="image" title="Capture a Video!" width="120">
+                        <!--<input type="button" onclick="recordVideo();" value="Record a Video!"/>-->
+                    </div>
+                </div>
+            </div>
+            <div id="preview" class="app" style="display: none;">
+                <div>
+                    <div id="imagecontainer" class="imagecontainer">
+                        <img id="smallImage"/>
+                    </div>
+                    <div id="yourstory" class="form-group" style="width: 90%;">
+                        <textarea class="form-control upcomming-element" rows="5" placeholder="What is the story?" id="media-msg"></textarea>
+                    </div>
+                    <div>
+                        <input type="button" class="btn-info input-lg upcomming-element" onclick="uploadPhoto();" value="Upload"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="js/jquery-2.1.3.min.js"></script>
+        <script type="text/javascript" src="js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="js/sweetalert.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+        <script type="text/javascript" src="js/ajax.js"></script>
+        <script type="text/javascript" src="js/hammer.min.js"></script>
+        <script type="text/javascript" src="js/jquery.hammer.js"></script>
+        <script type="text/javascript">
+            app.initialize();
+            $("#preview").hammer().bind("swipe", function(){
+                $("#preview").fadeOut("fast",function(){
+                    document.getElementById("imagecontainer").innerHTML = '<img id="smallImage"/>';
+                    $("#backbutton").hide();
+                    $("#app").fadeIn("fast");
+                });
+            });
+            function showAppPage(){
+                $("#preview").fadeOut("fast",function(){
+                    document.getElementById("imagecontainer").innerHTML = '<img id="smallImage"/>';
+                    $("#backbutton").hide();
+                    $("#app").fadeIn("fast");
+                });
+                $("#activepage").val("app");
+            }
+            function takePhoto(){
+                navigator.camera.getPicture(onSuccess, onFail, {
+                    quality: 50,
+                    destinationType: Camera.DestinationType.FILE_URI,
+                    mediaType: navigator.camera.MediaType.ALLMEDIA,
+                    correctOrientation: true
+                });
+                function onSuccess(imageData) {
+                    // here we can upload imageData to the server
+                    var smallImage = document.getElementById('smallImage');
+                    $("#imagecontainer").show();
+                    var urlArray = imageData.split("/");
+                    var fileName = urlArray[urlArray.length-1];
+                    smallImage.src = imageData;
+                    $("#photouri").val(imageData);
+                    $("#uploadtype").val("photo");
+                    $("#app").fadeOut("fast",function(){
+                        $("#preview").fadeIn("fast");
+                        $("#backbutton").show();
+                        $("#activepage").val("submitphoto");
+                    });
+                }
+                function onFail(message) {
+                    sweetAlert('Ooops! ' + message);
+                }
+            }
+            function uploadPhoto(){
+                if($("#uploadtype").val()=="photo"){
+                    var photoURI = $("#photouri").val();
+                    var urlArray = photoURI.split("/");
+                    var fullFileName = urlArray[urlArray.length-1];
+                    var fileName = fullFileName.split(".")[0];
+                    var fileExtension = fullFileName.split(".")[1];
+                    var url=encodeURI("http://app.heyorca.com:8080/app/upload_as_media");
+                    var options = new FileUploadOptions();
+                    options.fileKey="photo";
+                    options.fileName=fullFileName;
+                    options.mimeType="image/jpeg";
+
+                    var params = new Object();
+                    params.user_id = $("#currentuserid").val();
+                    params.team_id = $("#currentteamid").val();
+
+                    options.params = params;
+                    var theheaders={'Authorization':"Basic " + "username" + ":" + "password"};
+                    options.headers = theheaders;
+                    options.chunkedMode = false;
+
+                    var ft = new FileTransfer();
+                    ft.upload(photoURI, url, successFileTransfer, errorFileTransfer, options, true);
+                    function successFileTransfer(data){
+                        var responseStr = data.response;
+                        var responseJson  = JSON.parse(responseStr);
+                        if(responseJson.success == true){
+                            sweetAlert("Your photo was uploaded successfully.");
+                            showAppPage();
+                        }else{
+                            sweetAlert("Ooops! "+responseJson.data);
+                        }
+                    }
+                    function errorFileTransfer(err){
+                        sweetAlert("Transfer unsuccessful! Check your internet connection. ");
+                    }
+                }else if($("#uploadtype").val()=="video"){
+                    var photoURI = $("#videouri").val();
+                    var urlArray = photoURI.split("/");
+                    var fullFileName = urlArray[urlArray.length-1];
+                    var fileName = fullFileName.split(".")[0];
+                    var fileExtension = fullFileName.split(".")[1];
+                    var url=encodeURI("http://app.heyorca.com:8080/app/upload_as_media");
+                    var options = new FileUploadOptions();
+                    options.fileKey="photo";
+                    options.fileName=fullFileName;
+                    options.mimeType="video/mp4";
+
+                    var params = new Object();
+                    params.user_id = $("#currentuserid").val();
+                    params.team_id = $("#currentteamid").val();
+
+                    options.params = params;
+                    var theheaders={'Authorization':"Basic " + "username" + ":" + "password"};
+                    options.headers = theheaders;
+                    options.chunkedMode = false;
+
+                    var ft = new FileTransfer();
+                    ft.upload(photoURI, url, successFileTransfer, errorFileTransfer, options, true);
+                    function successFileTransfer(data){
+                        var responseStr = data.response;
+                        var responseJson  = JSON.parse(responseStr);
+                        if(responseJson.success == true){
+                            sweetAlert("Your video was uploaded successfully.");
+                            showAppPage();
+                        }else{
+                            sweetAlert("Ooops! "+responseJson.data);
+                        }
+                    }
+                    function errorFileTransfer(err){
+                        sweetAlert("Transfer unsuccessful! Check your internet connection. ");
+                    }
+                }
+            }
+            function recordVideo() {
+                navigator.device.capture.captureVideo(captureSuccess, captureError, null);
+                function captureSuccess(mediaFiles) {
+                    var v = "<video controls='controls'>";
+                    v += "<source src='" + mediaFiles[0].fullPath + "' type='video/mp4'>";
+                    v += "</video>";
+                    $("#videouri").val(mediaFiles[0].fullPath);
+                    $("#uploadtype").val("video");
+                    document.getElementById("imagecontainer").innerHTML = v;
+                    $("#imagecontainer").show();
+                    $("#app").fadeOut("fast",function(){
+                        $("#preview").fadeIn("fast");
+                        $("#backbutton").show();
+                        $("#activepage").val("submitvideo");
+                    });
+                }
+                function captureError(error) {
+                    var msg = 'Ooops! ' + error.message;
+                    sweetAlert(msg);
+                }
+            }
+            function logMeOut(){
+//                $("#app-wrapper").fadeOut("fast",function(){
+//                    $("#username").val("");
+//                    $("#password").val("");
+//                    $("#bs-example-navbar-collapse-1 ul li").removeClass("active");
+//                    $("#bs-example-navbar-collapse-1").removeClass("in");
+//                    sweetAlert("See you next time!");
+//                    $("#login").fadeIn("fast");
+//                    $("#backbutton").hide();
+//                });
+                location.reload();
+            }
+            function switchMyTeam(){
+                $("#app").fadeOut("fast",function(){
+                    $("#bs-example-navbar-collapse-1").removeClass("in");
+                    $("#teams").show();
+                });
+            }
+            function outlink(){
+                //fixme: find a way to fix the problem with back button when click on outlinks!!
+//                document.removeEventListener("backbutton",false);
+            }
+        </script>
+    </body>
+</html>
