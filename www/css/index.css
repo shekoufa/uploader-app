@@ -239,9 +239,11 @@ h1 {
     left: 50%;
     width: 90px;
     height: 90px;
-    margin-top: -45px;
+    margin-top: -35px;
     margin-left: -45px;
+    z-index: 500;
 }
+
 *{
     -webkit-tap-highlight-color: transparent !important;
 
@@ -251,4 +253,21 @@ h1 {
     padding: 5px !important;
     /*line-height: auto !important;*/
 
+}
+.pages{
+    display: none;
+}
+#splashscreen{
+    height:50px;                   /* text area height */
+    width:80%;                   /* text area width */
+    text-align:center;
+    margin-top:50px;
+}
+#splashscreen img{
+    width:170px;
+    left: 50%;
+    margin-left: -75px;
+    margin-top: -10px;
+    position: absolute;
+    top: 50%;
 }

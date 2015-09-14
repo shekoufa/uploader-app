@@ -139,16 +139,17 @@ body.stop-scrolling {
     transition: all 0.3s; }
     .sweet-alert input:focus {
       outline: none;
+      box-shadow: 0px 0px 3px #c4e6f5;
       border: 1px solid #b4dbed; }
-      /*.sweet-alert input:focus::-moz-placeholder {*/
-        /*transition: opacity 0.3s 0.03s ease;*/
-        /*opacity: 0.5; }*/
-      /*.sweet-alert input:focus:-ms-input-placeholder {*/
-        /*transition: opacity 0.3s 0.03s ease;*/
-        /*opacity: 0.5; }*/
-      /*.sweet-alert input:focus::-webkit-input-placeholder {*/
-        /*transition: opacity 0.3s 0.03s ease;*/
-        /*opacity: 0.5; }*/
+      .sweet-alert input:focus::-moz-placeholder {
+        transition: opacity 0.3s 0.03s ease;
+        opacity: 0.5; }
+      .sweet-alert input:focus:-ms-input-placeholder {
+        transition: opacity 0.3s 0.03s ease;
+        opacity: 0.5; }
+      .sweet-alert input:focus::-webkit-input-placeholder {
+        transition: opacity 0.3s 0.03s ease;
+        opacity: 0.5; }
     .sweet-alert input::-moz-placeholder {
       color: #bdbdbd; }
     .sweet-alert input:-ms-input-placeholder {
@@ -182,7 +183,7 @@ body.stop-scrolling {
     cursor: pointer; }
     .sweet-alert button:focus {
       outline: none;
-    }
+      box-shadow: 0 0 2px rgba(128, 179, 235, 0.5), inset 0 0 0 1px rgba(0, 0, 0, 0.05); }
     .sweet-alert button:hover {
       background-color: #7ecff4; }
     .sweet-alert button:active {
@@ -194,8 +195,7 @@ body.stop-scrolling {
       .sweet-alert button.cancel:active {
         background-color: #a8a8a8; }
       .sweet-alert button.cancel:focus {
-        /*box-shadow: rgba(197, 205, 211, 0.8) 0px 0px 2px, rgba(0, 0, 0, 0.0470588) 0px 0px 0px 1px inset !important;*/
-      }
+        box-shadow: rgba(197, 205, 211, 0.8) 0px 0px 2px, rgba(0, 0, 0, 0.0470588) 0px 0px 0px 1px inset !important; }
     .sweet-alert button[disabled] {
       opacity: .6;
       cursor: default; }

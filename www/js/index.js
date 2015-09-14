@@ -33,6 +33,14 @@ var app = {
     // The scope of 'this' is the event. In order to call the 'receivedEvent'
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function() {
+//        var element = document.getElementById('deviceProperties');
+//        element.innerHTML = 'Device Model: '    + device.model    + '<br />' +
+//            'Device Cordova: '  + device.cordova  + '<br />' +
+//            'Device Platform: ' + device.platform + '<br />' +
+//            'Device UUID: '     + device.uuid     + '<br />' +
+//            'Device Version: '  + device.version  + '<br />';
+        showLoading();
+        db = createDb();
         document.addEventListener("backbutton", onBackKeyDown, false);
         app.receivedEvent('deviceready');
 
@@ -47,13 +55,12 @@ var app = {
         listeningElement.setAttribute('style', 'display:none;');
         receivedElement.setAttribute('style', 'display:block;');
 
-        console.log('Received Event: ' + id);
     }
 };
 function onBackKeyDown(evt) {
     evt.preventDefault();
     evt.stopPropagation();
-    if($("#activepage").val()=="app" || $("activepage").val()=="login"){
+    if($("#activepage").val()=="teams" || $("activepage").val()=="login"){
         sweetAlert({
             title: "Are you sure?",
             text: "The application will be closed!",
@@ -65,15 +72,20 @@ function onBackKeyDown(evt) {
             function(){
                 navigator.app.exitApp();
             });
-    }else if($("#activepage").val()!="outlink"){
+    }else if($("#activepage").val()=="app"){
+        $("#app").fadeOut("slow",function(){
+            setActivePage("teams");
+            $("#backbutton").hide();
+            $("#teams").fadeIn();
+        });
+    }else if($("#activepage").val()=="preview"){
         $("#preview").fadeOut("slow",function(){
             document.getElementById("imagecontainer").innerHTML = '<img id="smallImage"/>';
-            $("#backbutton").hide();
-            $("#activepage").val("app");
+//            $("#backbutton").hide();
+            setActivePage("app");
             $("#app").fadeIn("slow");
         });
     }
-
     if($("#activepage").val()=="outlink"){
         history.go(-1);
         navigator.app.backHistory();
@@ -85,4 +97,20 @@ function showLoading(){
 }
 function hideLoading(){
     $("#loading").hide();
+}
+function showLogin(){
+    $(".pages").hide();
+    setActivePage("login");
+    $("#login").fadeIn("slow");
+}
+function showTeams(){
+    $(".pages").hide();
+    setActivePage("teams");
+    $("#teams").fadeIn("slow");
+}
+function setActivePage(page){
+    $("#activepage").val(page);
+}
+function getActivePage(){
+    return $("#activepage").val();
 }

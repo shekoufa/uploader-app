@@ -31,6 +31,9 @@
         <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
         <link rel="stylesheet" type="text/css" href="css/bootstrap-theme.css" />
         <title>File Uploader</title>
+        <script type="text/javascript">
+            var db = null;
+        </script>
     </head>
     <body>
         <div id="loading" style="display: none;">
@@ -39,19 +42,23 @@
         <input type="hidden" id="activepage" value="login"/>
         <input type="hidden" id="currentuserid" value=""/>
         <input type="hidden" id="currentteamid" value=""/>
+        <input type="hidden" id="currentcode" value=""/>
         <input type="hidden" id="photouri" value=""/>
         <input type="hidden" id="videouri" value=""/>
-        <input type="hidden" id="uploadtype" value=""/>
-        <div id="login" class="container">
+        <input- type="hidden" id="uploadtype" value=""/>
+        <div id="splashscreen" class="container">
+            <img src="img/logo.png"/>
+        </div>
+        <div id="login" class="container pages">
             <img src="img/logo.svg"/>
             <div id="login-inputs" class="form-group">
                 <input type="text" class="form-control input-lg" id="username" placeholder="Your Identity..."/>
                 <input type="password" class="form-control input-lg upcomming-element" id="password" placeholder="Your Password..."/>
                 <div class="upcomming-element">
-                    <input type="checkbox" checked id="termsaccept"/> I have read and accept <a ontouchstart="outlink();" href="http://heyorca.com/terms-of-service/">Terms of Service</a> and <a href="http://heyorca.com/privacy-policy/">Privacy Policy</a>.
+                    <input type="checkbox" checked id="termsaccept"/> I have read and accept <a target="_blank" ontouchstart="outlink();" href="http://heyorca.com/terms-of-service/">Terms of Service</a> and <a target="_blank" href="http://heyorca.com/privacy-policy/">Privacy Policy</a>.
                 </div>
-                <input type="button" class="btn-info input-lg upcomming-element" onclick="sendAjax();" value="Log me in"/>
-                <a style="display: inline-block;" class="upcomming-element" ontouchstart="outlink();" href="https://app.heyorca.com/auth/forgot_password">Forgot your credentials?!</a>
+                <input type="button" class="btn-info input-lg upcomming-element" onclick="sendAjax('1');" value="Log me in"/>
+                <a target="_blank" style="display: inline-block;" class="upcomming-element" ontouchstart="outlink();" href="https://app.heyorca.com/auth/forgot_password">Forgot your credentials?!</a>
             </div>
         </div>
         <div id="app-wrapper" style="display: none;">
@@ -77,13 +84,13 @@
                     </div><!-- /.navbar-collapse -->
                 </div><!-- /.container-fluid -->
             </nav>
-            <div id="teams" class="app" style="display: none;">
+            <div id="teams" class="app pages" style="display: none;">
                 <div class="info-text">
                     Tap on team to continue...
                 </div>
                 <div id="team-holder"></div>
             </div>
-            <div id="app" class="app" style="display: none;">
+            <div id="app" class="app pages" style="display: none;">
                 <div id="functionbottons">
                     <div class="info-text">
                         Capture and upload media to your HeyOrca! library, right away
@@ -98,7 +105,7 @@
                     </div>
                 </div>
             </div>
-            <div id="preview" class="app" style="display: none;">
+            <div id="preview" class="app pages" style="display: none;">
                 <div>
                     <div id="imagecontainer" class="imagecontainer">
                         <img id="smallImage"/>
@@ -117,26 +124,36 @@
         <script type="text/javascript" src="js/bootstrap.min.js"></script>
         <script type="text/javascript" src="js/jquery.animate-enhanced.min.js"></script>
         <script type="text/javascript" src="js/sweetalert.js"></script>
+        <script type="text/javascript" src="js/db.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
         <script type="text/javascript" src="js/ajax.js"></script>
         <script type="text/javascript" src="js/hammer.min.js"></script>
         <script type="text/javascript" src="js/jquery.hammer.js"></script>
         <script type="text/javascript">
             app.initialize();
-            $("#preview").hammer().bind("swipe", function(){
-                $("#preview").fadeOut("slow",function(){
-                    document.getElementById("imagecontainer").innerHTML = '<img id="smallImage"/>';
-                    $("#backbutton").hide();
-                    $("#app").fadeIn("slow");
-                });
-            });
+//            $("#preview").hammer().bind("swipe", function(){
+//                $("#preview").fadeOut("slow",function(){
+//                    document.getElementById("imagecontainer").innerHTML = '<img id="smallImage"/>';
+//                    $("#backbutton").hide();
+//                    setActivePage("app");
+//                    $("#app").fadeIn("slow");
+//                });
+//            });
             function showAppPage(){
-                $("#preview").fadeOut("slow",function(){
-                    document.getElementById("imagecontainer").innerHTML = '<img id="smallImage"/>';
-                    $("#backbutton").hide();
-                    $("#app").fadeIn("slow");
-                });
-                $("#activepage").val("app");
+                if(getActivePage()=="preview"){
+                    $("#preview").fadeOut("slow",function(){
+                        document.getElementById("imagecontainer").innerHTML = '<img id="smallImage"/>';
+//                        $("#backbutton").hide();
+                        setActivePage("app");
+                        $("#app").fadeIn("slow");
+                    });
+                }else if(getActivePage()=="app"){
+                    $("#app").fadeOut("slow",function(){
+                        $("#backbutton").hide();
+                        setActivePage("teams");
+                        $("#teams").fadeIn("slow");
+                    });
+                }
             }
             function takePhoto(){
                 navigator.camera.getPicture(onSuccess, onFail, {
@@ -156,8 +173,8 @@
                     $("#uploadtype").val("photo");
                     $("#app").fadeOut("slow",function(){
                         $("#preview").fadeIn("slow");
+                        setActivePage("preview");
                         $("#backbutton").show();
-                        $("#activepage").val("submitphoto");
                     });
                 }
                 function onFail(message) {
@@ -180,22 +197,25 @@
                     options.mimeType="image/jpeg";
 
                     var params = new Object();
-                    params.user_id = $("#currentuserid").val();
+//                    params.user_id = $("#currentuserid").val();
                     params.team_id = $("#currentteamid").val();
-
+                    params.auth_code = $("#currentcode").val();
+                    params.device_id = device.uuid;
                     options.params = params;
                     var theheaders={'Authorization':"Basic " + "username" + ":" + "password"};
                     options.headers = theheaders;
                     options.chunkedMode = false;
 
                     var ft = new FileTransfer();
-                    ft.upload(photoURI, url, successPhotoFileTransfer, errorPhotoFileTransfer, options, true);
+                    ft.upload(photoURI, url, successPhotoFileTransfer, errorPhotoFileTransfer, options);
                     function successPhotoFileTransfer(data){
                         hideLoading();
                         var responseStr = data.response;
+                        console.log("This is the response str for photo: "+data);
                         var responseJson  = JSON.parse(responseStr);
                         if(responseJson.success == true){
                             sweetAlert("Your photo was uploaded successfully.");
+                            updateAuthCode($("#currentcode").val(),responseJson.data.user.device_authentication_code);
                             showAppPage();
                         }else{
                             sweetAlert({
@@ -225,8 +245,10 @@
 
 
 
-                    params.user_id = $("#currentuserid").val();
+//                    params.user_id = $("#currentuserid").val();
                     params.team_id = $("#currentteamid").val();
+                    params.auth_code = $("#currentcode").val();
+                    params.device_id = device.uuid;
 
                     options.params = params;
                     var theheaders={'Authorization':"Basic " + "username" + ":" + "password"};
@@ -238,9 +260,11 @@
                     function successFileTransfer(data){
                         hideLoading();
                         var responseStr = data.response;
+                        console.log("This is the response str for video: "+responseStr);
                         var responseJson  = JSON.parse(responseStr);
                         if(responseJson.success == true){
                             sweetAlert("Your video was uploaded successfully.");
+                            updateAuthCode($("#currentcode").val(),responseJson.data.user.device_authentication_code);
                             showAppPage();
                         }else{
                             sweetAlert({
@@ -268,8 +292,8 @@
                     $("#imagecontainer").show();
                     $("#app").fadeOut("slow",function(){
                         $("#preview").fadeIn("slow");
+                        setActivePage("preview");
                         $("#backbutton").show();
-                        $("#activepage").val("submitvideo");
                     });
                 }
                 function captureError(error) {
@@ -287,13 +311,26 @@
 //                    $("#login").fadeIn("fast");
 //                    $("#backbutton").hide();
 //                });
-                location.reload();
+                db.transaction(function(tx) {
+                    logOut(tx);
+                });
+
             }
             function switchMyTeam(){
-                $("#app").fadeOut("slow",function(){
-                    $("#bs-example-navbar-collapse-1").removeClass("in");
-                    $("#teams").show();
-                });
+                if(getActivePage()=="app"){
+                    $("#app").fadeOut("slow",function(){
+                        $("#bs-example-navbar-collapse-1").removeClass("in");
+                        setActivePage("teams");
+                        $("#teams").show();
+                    });
+                }else if (getActivePage() == "preview"){
+                    $("#preview").fadeOut("slow",function(){
+                        $("#bs-example-navbar-collapse-1").removeClass("in");
+                        setActivePage("teams");
+                        $("#teams").show();
+                    });
+                }
+
             }
             function outlink(){
                 //fixme: find a way to fix the problem with back button when click on outlinks!!

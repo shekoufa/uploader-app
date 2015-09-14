@@ -60,7 +60,7 @@
             };
             e.onkeydown = k, e.onfocus = function () {
                 setTimeout(function () {
-                    r !== n && (r.focus(), r = n)
+                    r !== n && (r.blur(), r = n)
                 }, 0)
             }, l.enableButtons()
         }, s.setDefaults = l.setDefaults = function (e) {
@@ -78,14 +78,14 @@
             return u.removeClass(i, "pulseWarning"), u.removeClass(i.querySelector(".sa-body"), "pulseWarningIns"), u.removeClass(i.querySelector(".sa-dot"), "pulseWarningIns"), setTimeout(function () {
                 var e = o.getAttribute("data-custom-class");
                 u.removeClass(o, e)
-            }, 300), u.removeClass(t.body, "stop-scrolling"), e.onkeydown = a, e.previousActiveElement && e.previousActiveElement.focus(), r = n, clearTimeout(o.timeout), !0
+            }, 300), u.removeClass(t.body, "stop-scrolling"), e.onkeydown = a, e.previousActiveElement && e.previousActiveElement.blur(), r = n, clearTimeout(o.timeout), !0
         }, s.showInputError = l.showInputError = function (e) {
             var t = d.getModal(), n = t.querySelector(".sa-input-error");
             u.addClass(n, "show");
             var o = t.querySelector(".sa-error-container");
             u.addClass(o, "show"), o.querySelector("p").innerHTML = e, setTimeout(function () {
                 s.enableButtons()
-            }, 1), t.querySelector("input").focus()
+            }, 1), t.querySelector("input").blur()
         }, s.resetInputError = l.resetInputError = function (e) {
             if (e && 13 === e.keyCode)return!1;
             var t = d.getModal(), n = t.querySelector(".sa-input-error");
@@ -228,7 +228,7 @@
                     p = m;
                     break
                 }
-                9 === i ? (f = -1 === p ? u : p === d.length - 1 ? d[0] : d[p + 1], r.stopEventPropagation(l), f.focus(), o.confirmButtonColor && s.setFocusStyle(f, o.confirmButtonColor)) : 13 === i ? ("INPUT" === f.tagName && (f = u, u.focus()), f = -1 === p ? u : n) : 27 === i && o.allowEscapeKey === !0 ? (f = c, r.fireClick(f, l)) : f = n
+                9 === i ? (f = -1 === p ? u : p === d.length - 1 ? d[0] : d[p + 1], r.stopEventPropagation(l), f.blur(), o.confirmButtonColor && s.setFocusStyle(f, o.confirmButtonColor)) : 13 === i ? ("INPUT" === f.tagName && (f = u, u.blur()), f = -1 === p ? u : n) : 27 === i && o.allowEscapeKey === !0 ? (f = c, r.fireClick(f, l)) : f = n
             }
         };
         a["default"] = l, o.exports = a["default"]
@@ -258,12 +258,12 @@
             return t.querySelector(p)
         }, g = function (e, t) {
             var n = s.hexToRgb(t);
-//            e.style.boxShadow = "0 0 2px rgba(" + n + ", 0.8), inset 0 0 0 1px rgba(0, 0, 0, 0.05)"
+            e.style.boxShadow = "0 0 2px rgba(" + n + ", 0.8), inset 0 0 0 1px rgba(0, 0, 0, 0.05)"
         }, b = function (n) {
             var o = v();
             l.fadeIn(h(), 10), l.show(o), l.addClass(o, "showSweetAlert"), l.removeClass(o, "hideSweetAlert"), e.previousActiveElement = t.activeElement;
             var a = o.querySelector("button.confirm");
-            a.focus(), setTimeout(function () {
+            a.blur(), setTimeout(function () {
                 l.addClass(o, "visible")
             }, 500);
             var r = o.getAttribute("data-timer");
@@ -323,7 +323,7 @@
                         case"input":
                         case"prompt":
                             c.setAttribute("type", e.inputType), c.value = e.inputValue, c.setAttribute("placeholder", e.inputPlaceholder), s.addClass(t, "show-input"), setTimeout(function () {
-                                c.focus(), c.addEventListener("keyup", swal.resetInputError)
+                                c.blur(), c.addEventListener("keyup", swal.resetInputError)
                             }, 400)
                     }
                 }();
