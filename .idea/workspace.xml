@@ -67,7 +67,7 @@
       <file leaf-file-name="index.html" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/www/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="38" column="4" selection-start="1878" selection-end="1878" vertical-scroll-proportion="0.2605364" vertical-offset="510" max-vertical-offset="6001">
+            <state line="287" column="62" selection-start="15858" selection-end="15858" vertical-scroll-proportion="0.6581353" vertical-offset="4519" max-vertical-offset="6001">
               <folding>
                 <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#a#0;n#div#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -458,12 +458,12 @@
       <updated>1441121593872</updated>
       <workItem from="1441121598643" duration="37363000" />
       <workItem from="1441636929424" duration="2729000" />
-      <workItem from="1441716739902" duration="58007000" />
+      <workItem from="1441716739902" duration="58500000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="98099000" />
+    <option name="totallyTimeSpent" value="98592000" />
   </component>
   <component name="TodoView" selected-index="0">
     <todo-panel id="selected-file">
@@ -805,7 +805,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/www/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="38" column="4" selection-start="1878" selection-end="1878" vertical-scroll-proportion="0.2605364" vertical-offset="510" max-vertical-offset="6001">
+        <state line="287" column="62" selection-start="15858" selection-end="15858" vertical-scroll-proportion="0.6581353" vertical-offset="4519" max-vertical-offset="6001">
           <folding>
             <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#a#0;n#div#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />

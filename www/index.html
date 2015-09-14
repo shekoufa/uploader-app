@@ -184,7 +184,7 @@
             }
             function uploadPhoto(){
                 showLoading();
-
+                alert("The upload type is: "+$("#uploadtype").val());
                 if($("#uploadtype").val()=="photo"){
                     var photoURI = $("#photouri").val();
                     alert("photo uri: "+photoURI);
