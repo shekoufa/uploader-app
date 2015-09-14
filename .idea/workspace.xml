@@ -67,7 +67,7 @@
       <file leaf-file-name="index.html" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/www/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="237" column="55" selection-start="13390" selection-end="13390" vertical-scroll-proportion="0.9348659" vertical-offset="3541" max-vertical-offset="5984">
+            <state line="38" column="4" selection-start="1878" selection-end="1878" vertical-scroll-proportion="0.2605364" vertical-offset="510" max-vertical-offset="6001">
               <folding>
                 <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#a#0;n#div#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -80,6 +80,35 @@
                 <element signature="n#style#0;n#div#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#1;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#textarea#0;n#div#1;n#div#0;n#div#2;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="db.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/www/js/db.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="45" column="9" selection-start="1350" selection-end="1350" vertical-scroll-proportion="0.0" vertical-offset="570" max-vertical-offset="1700">
+              <folding>
+                <marker date="1442242506366" expanded="true" signature="299:325" placeholder="SELECT * FRO..registration..." />
+                <marker date="1442242506366" expanded="true" signature="646:679" placeholder="DROP TABLE I..." />
+                <marker date="1442242506366" expanded="true" signature="721:802" placeholder="CREATE TABLE..registration..." />
+                <marker date="1442242506366" expanded="true" signature="1152:1191" placeholder="INSERT INTO ..." />
+                <marker date="1442242506366" expanded="true" signature="1381:1429" placeholder="UPDATE regis..." />
+                <marker date="1442242506366" expanded="true" signature="1530:1578" placeholder="UPDATE regis..." />
+                <marker date="1442242506366" expanded="true" signature="1628:1667" placeholder="SELECT * FRO..registration..." />
+                <marker date="1442242506366" expanded="true" signature="1991:2030" placeholder="SELECT * FRO..registration..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/www/js/index.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="62" column="34" selection-start="2516" selection-end="2516" vertical-scroll-proportion="0.0" vertical-offset="935" max-vertical-offset="2057">
+              <folding>
+                <element signature="n#!!doc" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -101,8 +130,8 @@
         <option value="$PROJECT_DIR$/www/css/index.css" />
         <option value="$PROJECT_DIR$/www/js/db.js" />
         <option value="$PROJECT_DIR$/www/js/ajax.js" />
-        <option value="$PROJECT_DIR$/www/js/index.js" />
         <option value="$PROJECT_DIR$/config.xml" />
+        <option value="$PROJECT_DIR$/www/js/index.js" />
         <option value="$PROJECT_DIR$/www/index.html" />
       </list>
     </option>
@@ -429,12 +458,12 @@
       <updated>1441121593872</updated>
       <workItem from="1441121598643" duration="37363000" />
       <workItem from="1441636929424" duration="2729000" />
-      <workItem from="1441716739902" duration="57555000" />
+      <workItem from="1441716739902" duration="58007000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="97647000" />
+    <option name="totallyTimeSpent" value="98099000" />
   </component>
   <component name="TodoView" selected-index="0">
     <todo-panel id="selected-file">
@@ -479,7 +508,7 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -497,7 +526,7 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32899022" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="7" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
@@ -505,7 +534,7 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.6319218" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.6319218" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -702,15 +731,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/www/js/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="84" column="38" selection-start="3403" selection-end="3403" vertical-scroll-proportion="0.0" vertical-offset="993" max-vertical-offset="2057">
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/www/res/icon/android/icon-36-ldpi.png">
       <provider selected="true" editor-type-id="images">
         <state />
@@ -760,24 +780,32 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/www/js/db.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="73" column="39" selection-start="2357" selection-end="2357" vertical-scroll-proportion="0.21938775" vertical-offset="1112" max-vertical-offset="1700">
+        <state line="45" column="9" selection-start="1350" selection-end="1350" vertical-scroll-proportion="0.0" vertical-offset="570" max-vertical-offset="1700">
           <folding>
-            <marker date="1442242506366" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..registration..." />
-            <marker date="1442242506366" expanded="true" signature="-1:-1" placeholder="DROP TABLE I..." />
-            <marker date="1442242506366" expanded="true" signature="-1:-1" placeholder="CREATE TABLE..registration..." />
-            <marker date="1442242506366" expanded="true" signature="-1:-1" placeholder="CREATE TABLE..registration..." />
-            <marker date="1442242506366" expanded="true" signature="-1:-1" placeholder="INSERT INTO ..." />
-            <marker date="1442242506366" expanded="true" signature="-1:-1" placeholder="UPDATE regis..." />
-            <marker date="1442242506366" expanded="true" signature="-1:-1" placeholder="UPDATE regis..." />
-            <marker date="1442242506366" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..registration..." />
-            <marker date="1442242506366" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..registration..." />
+            <marker date="1442242506366" expanded="true" signature="299:325" placeholder="SELECT * FRO..registration..." />
+            <marker date="1442242506366" expanded="true" signature="646:679" placeholder="DROP TABLE I..." />
+            <marker date="1442242506366" expanded="true" signature="721:802" placeholder="CREATE TABLE..registration..." />
+            <marker date="1442242506366" expanded="true" signature="1152:1191" placeholder="INSERT INTO ..." />
+            <marker date="1442242506366" expanded="true" signature="1381:1429" placeholder="UPDATE regis..." />
+            <marker date="1442242506366" expanded="true" signature="1530:1578" placeholder="UPDATE regis..." />
+            <marker date="1442242506366" expanded="true" signature="1628:1667" placeholder="SELECT * FRO..registration..." />
+            <marker date="1442242506366" expanded="true" signature="1991:2030" placeholder="SELECT * FRO..registration..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/js/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="62" column="34" selection-start="2516" selection-end="2516" vertical-scroll-proportion="0.0" vertical-offset="935" max-vertical-offset="2057">
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/www/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="237" column="55" selection-start="13390" selection-end="13390" vertical-scroll-proportion="0.9348659" vertical-offset="3541" max-vertical-offset="5984">
+        <state line="38" column="4" selection-start="1878" selection-end="1878" vertical-scroll-proportion="0.2605364" vertical-offset="510" max-vertical-offset="6001">
           <folding>
             <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#a#0;n#div#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />

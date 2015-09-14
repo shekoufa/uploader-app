@@ -60,7 +60,7 @@ var app = {
 function onBackKeyDown(evt) {
     evt.preventDefault();
     evt.stopPropagation();
-    if($("#activepage").val()=="teams" || $("activepage").val()=="login"){
+    if($("#activepage").val()=="teams" || $("#activepage").val()=="login"){
         sweetAlert({
             title: "Are you sure?",
             text: "The application will be closed!",
