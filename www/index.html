@@ -186,10 +186,14 @@
 
                 if($("#uploadtype").val()=="photo"){
                     var photoURI = $("#photouri").val();
+                    alert("photo uri: "+photoURI);
                     var urlArray = photoURI.split("/");
                     var fullFileName = urlArray[urlArray.length-1];
+                    alert("fullFileName: "+fullFileName);
                     var fileName = fullFileName.split(".")[0];
                     var fileExtension = fullFileName.split(".")[1];
+                    alert("FileName: "+fileName);
+                    alert("FileExt: "+fileExtension);
                     var url=encodeURI("http://app.heyorca.com:8080/app/upload_as_media");
                     var options = new FileUploadOptions();
                     options.fileKey="photo";
@@ -201,6 +205,7 @@
                     params.team_id = $("#currentteamid").val();
                     params.auth_code = $("#currentcode").val();
                     params.device_id = device.uuid;
+                    alert("device id: "+device.uuid);
                     options.params = params;
                     var theheaders={'Authorization':"Basic " + "username" + ":" + "password"};
                     options.headers = theheaders;
@@ -211,7 +216,7 @@
                     function successPhotoFileTransfer(data){
                         hideLoading();
                         var responseStr = data.response;
-                        console.log("This is the response str for photo: "+data);
+                        alert("this is response str: "+responseStr);
                         var responseJson  = JSON.parse(responseStr);
                         if(responseJson.success == true){
                             sweetAlert("Your photo was uploaded successfully.");
